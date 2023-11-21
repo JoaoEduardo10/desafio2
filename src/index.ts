@@ -1,5 +1,5 @@
 import { MongoConnect } from './database/mongo';
-import 'dotenv/config';
+import { server } from './server';
 
 class ServerInit {
   static async init() {
@@ -8,7 +8,9 @@ class ServerInit {
     mongoConnect
       .connect()
       .then(() => {
-        console.log('server on');
+        const PORT = process.env.PORT;
+
+        server.listen(PORT, () => console.log('server on'));
       })
       .catch((error) => {
         console.log(`não foi possivel se conectar ao banco: ${error.message}`);
