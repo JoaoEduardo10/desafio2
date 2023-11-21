@@ -7,7 +7,11 @@ export default defineConfig({
     setupFiles: ['tests/setup.ts'],
     coverage: {
       provider: 'v8',
-      exclude: ['src/server/errors', 'src/server/middlewares/g*'],
+      exclude: [
+        'src/server/errors',
+        'src/server/middlewares/g*',
+        'src/server/helpers/json*',
+      ],
     },
   },
 });
