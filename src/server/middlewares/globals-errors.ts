@@ -10,5 +10,5 @@ export const globalsErrorMiddleware = (
 ) => {
   const statusCode = error.statusCode ?? 500;
 
-  res.status(statusCode).json({ error: error.message });
+  res.status(statusCode).json({ mensagem: error.message });
 };
