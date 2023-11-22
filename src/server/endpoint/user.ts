@@ -5,12 +5,18 @@ import { SignInMiddleware } from '../middlewares/login/signIn';
 import { SignInRouter } from '../usecase/signIn';
 import { GetUserMiddleware } from '../middlewares/get-user/get-user';
 import { GetUserRouter } from '../usecase/get-user';
+import { AuthenticationMiddleware } from '../middlewares/authentication';
 
 const userRouter = Router();
 
 userRouter.post('/user', SignUpMiddleware.middleware, SignUpRouter.signUp);
 userRouter.post('/login', SignInMiddleware.middleware, SignInRouter.signIn);
 
-userRouter.get('/user/:id', GetUserMiddleware.middleware, GetUserRouter.get);
+userRouter.get(
+  '/user/:id',
+  AuthenticationMiddleware.middleware,
+  GetUserMiddleware.middleware,
+  GetUserRouter.get,
+);
 
 export { userRouter };
