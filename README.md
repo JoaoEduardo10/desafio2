@@ -33,6 +33,14 @@ Antes de tudo, instale as dependências do projeto e adicione o aquivo **.env**:
 
 O arquivo **.env** está incluído aqui por questões didáticas. Em um projeto normal, ele seria removido.
 
+## Executando o Projeto com Docker
+
+Antes de tudo, o **.env** está configurado para rodar com Docker. Caso queira executar manualmente, será necessário fazer uma pequena alteração. Na variável **MONGO_URI**, altere de **MONGO_URI=mongodb://mongo:27017** para **MONGO_URI=mongodb://localhost:27017**. No arquivo docker-compose, remova os serviços que executam o Dockerfile. Caso queira executar com Docker, basta rodar o comando abaixo:
+
+```bash
+docker-compose up -d
+```
+
 ## Instalação das Dependências
 
 ```bash
@@ -57,14 +65,6 @@ ou
 
 ```bash
 npm run test
-```
-
-### Executando o Projeto com Docker
-
-Antes de tudo, o **.env** está configurado para rodar com Docker. Caso queira executar manualmente, será necessário fazer uma pequena alteração. Na variável **MONGO_URI**, altere de **MONGO_URI=mongodb://mongo:27017** para **MONGO_URI=mongodb://localhost:27017**. No arquivo docker-compose, remova os serviços que executam o Dockerfile. Caso queira executar com Docker, basta rodar o comando abaixo:
-
-```bash
-docker-compose up -d
 ```
 
 ### Executando o Projeto em Produção
