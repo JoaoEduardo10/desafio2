@@ -13,7 +13,7 @@ class SignInController implements IController {
     req: IApiRequest<ISignInParams>,
   ): Promise<IApiResponse<ISignInReturn>> {
     if (!req.body) {
-      throw new Internal_Server_Error('Não foi possivel logar o usuário');
+      throw new Internal_Server_Error('Não foi possivel autenticar o usuário');
     }
 
     const { email, senha } = req.body;

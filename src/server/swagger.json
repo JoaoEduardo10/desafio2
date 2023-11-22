@@ -1,0 +1,232 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API RESTful",
+    "description": "API RESTful responsável pela criação e autenticação de usuários.",
+    "termsOfService": "João Eduardo",
+    "contact": {
+      "email": "joaoeduardoj920@gmail.com",
+      "celular": "(86) 981320524"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000/v1",
+      "description": "API de desenvolvimento"
+    }
+  ],
+  "paths": {
+    "/user": {
+      "post": {
+        "summary": "Criar Usuário",
+        "description": "Rota responsável por criar um novo usuário.",
+        "tags": ["USER"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "email": "test@gmail.com",
+                "senha": "1234",
+                "nome": "test",
+                "telefones": [
+                  {
+                    "ddd": "86",
+                    "numero": "123456789"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuário criado com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": "1234",
+                  "data_criacao": "2023-01-01T12:00:00Z",
+                  "data_atualizacao": "2023-01-02T12:30:00Z",
+                  "token": "",
+                  "ultimo_login": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro no corpo da requisição",
+            "content": {
+              "application/json": {
+                "example": [
+                  { "mensagem": "Adicione o email" },
+                  { "mensagem": "Formato de email inválido" },
+                  { "mensagem": "Email já existente" },
+                  { "mensagem": "Adicione o nome" },
+                  { "mensagem": "Adicione uma senha" },
+                  { "mensagem": "Adicione pelo menos um telefone" },
+                  { "mensagem": "Adicione o DDD" },
+                  { "mensagem": "Adicione o número" }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ou não esperado pelo servidor",
+            "content": {
+              "application/json": {
+                "example": [
+                  { "mensagem": "Não foi possível criar o usuário" },
+                  { "mensagem": "Erro inesperado" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "summary": "Login do Usuário",
+        "description": "Rota responsável por autenticar o usuário.",
+        "tags": ["USER"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário encontrado com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": "1234",
+                  "nome": "Nome do Usuário",
+                  "email": "test@gmail.com",
+                  "senha": "1234",
+                  "telefones": [{ "numero": "123456789", "ddd": "11" }],
+                  "data_criacao": "2023-01-01T12:00:00Z",
+                  "data_atualizacao": "2023-01-02T12:30:00Z",
+                  "token": "token_gerado",
+                  "ultimo_login": "2023-01-02T12:15:00Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "content": {
+              "application/json": {
+                "example": [
+                  { "mensagem": "Não autorizado" },
+                  { "mensagem": "Sessão inválida" }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Erro na rota do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "ID inválido"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ou não esperado pelo servidor",
+            "content": {
+              "application/json": {
+                "example": [
+                  { "mensagem": "Não foi possível buscar o usuário" },
+                  { "mensagem": "Erro inesperado" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login do Usuário",
+        "description": "Rota responsável por autenticar o usuário.",
+        "tags": ["LOGIN"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "email": "test@gmail.com",
+                "senha": "1234"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário autenticado com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": "1234",
+                  "data_criacao": "2023-01-01T12:00:00Z",
+                  "data_atualizacao": "2023-01-02T12:30:00Z",
+                  "token": "ecwrvtedfndv23438uvnwr rc2748g2bvec 2",
+                  "ultimo_login": "2023-01-02T12:30:00Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro no corpo da requisição",
+            "content": {
+              "application/json": {
+                "example": [
+                  { "mensagem": "Adicione o email" },
+                  { "mensagem": "Formato de email inválido" },
+                  { "mensagem": "Adicione uma senha" }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Usuário e/ou senha inválidos"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ou não esperado pelo servidor",
+            "content": {
+              "application/json": {
+                "example": [
+                  { "mensagem": "Não foi possível autenticar o usuário" },
+                  { "mensagem": "Erro inesperado" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

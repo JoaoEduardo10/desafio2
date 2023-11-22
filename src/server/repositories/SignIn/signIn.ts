@@ -17,13 +17,13 @@ class MongoSignInRepository implements ISignInRepository {
     const { email, senha } = params;
 
     if (!email || !senha) {
-      throw new Internal_Server_Error('Não foi possivel logar o usuário');
+      throw new Internal_Server_Error('Não foi possivel autenticar o usuário');
     }
 
     const isLogged = await this.User.findOne({ email, senha });
 
     if (!isLogged) {
-      throw new Internal_Server_Error('Não é possivel logar o usuário');
+      throw new Internal_Server_Error('Não é possivel autenticar o usuário');
     }
 
     await this.User.findOneAndUpdate(

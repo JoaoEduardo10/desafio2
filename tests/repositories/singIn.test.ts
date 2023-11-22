@@ -36,7 +36,9 @@ describe('signIn', () => {
     } catch (error) {
       expect(error).toBeTruthy();
 
-      expect((error as Error).message).toBe('Não foi possivel logar o usuário');
+      expect((error as Error).message).toBe(
+        'Não foi possivel autenticar o usuário',
+      );
     }
   });
 
@@ -52,7 +54,9 @@ describe('signIn', () => {
     } catch (error) {
       expect(error).toBeTruthy();
 
-      expect((error as Error).message).toBe('Não foi possivel logar o usuário');
+      expect((error as Error).message).toBe(
+        'Não foi possivel autenticar o usuário',
+      );
     }
   });
 
@@ -69,7 +73,9 @@ describe('signIn', () => {
     } catch (error) {
       expect(error).toBeTruthy();
 
-      expect((error as Error).message).toBe('Não é possivel logar o usuário');
+      expect((error as Error).message).toBe(
+        'Não é possivel autenticar o usuário',
+      );
     }
   });
 
