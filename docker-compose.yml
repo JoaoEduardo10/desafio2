@@ -8,3 +8,11 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
     ports:
       - '27017:27017'
+  server-desafio:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - '8000:8000'
+    depends_on:
+      - mongo
