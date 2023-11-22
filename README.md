@@ -35,7 +35,15 @@ O arquivo **.env** está incluído aqui por questões didáticas. Em um projeto 
 
 ## Executando o Projeto com Docker
 
-Antes de tudo, o **.env** está configurado para rodar com Docker. Caso queira executar manualmente, será necessário fazer uma pequena alteração. Na variável **MONGO_URI**, altere de **MONGO_URI=mongodb://mongo:27017** para **MONGO_URI=mongodb://localhost:27017**. No arquivo docker-compose, remova os serviços que executam o Dockerfile. Caso queira executar com Docker, basta rodar o comando abaixo:
+Antes de tudo, o **.env** está configurado para rodar com Docker. Caso queira executar manualmente, será necessário fazer uma pequena alteração. Na variável **MONGO_URI**, altere de **MONGO_URI=mongodb://mongo:27017** para **MONGO_URI=mongodb://localhost:27017** . No arquivo docker-compose, remova os serviços que executam o Dockerfile e rode este comando.
+
+```bash
+docker-compose up -d
+```
+
+Assim voçê podera passa direto para a instalação das dependências e execução do projeto
+
+Caso queira executar com Docker, basta rodar o comando abaixo:
 
 ```bash
 docker-compose up -d
