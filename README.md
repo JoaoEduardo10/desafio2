@@ -1,6 +1,8 @@
 # DESAFIO2
 
-Bem-vindo à segunda parte do desafio! Antes de começar, gostaria de destacar que existem áreas que poderiam ser aprimoradas. No entanto, para fins deste desafio, optei por evitar termos muito técnicos e importantes, como criptografar senhas de usuários, validar o tamanho mínimo de caracteres no nome do usuário, verificar o formato do número de telefone, entre outros. Acredito que, para o escopo do desafio, as implementações atuais são razoáveis. Espero que apreciem.
+Bem-vindo à segunda parte do desafio! Antes de nos aprofundarmos, gostaria de salientar que há áreas que poderiam ser refinadas. No entanto, para os propósitos deste desafio, tomei a decisão de evitar terminologia excessivamente técnica e crucial, como criptografar senhas de usuários, impor requisitos de tamanho mínimo para nomes de usuários, validar formatos de números de telefone, entre outras práticas importantes. Acredito que, dentro do escopo do desafio, as implementações atuais são razoáveis. Espero que apreciem.
+
+Além disso, escolhi utilizar TypeScript em vez de JavaScript puro devido à necessidade de tipagem dinâmica na criação das classes. Se estivesse utilizando JavaScript puro, provavelmente optaria por usar o GULP para a builda o projeto, considerando suas capacidades na automação de tarefas e construção de projetos JavaScript.
 
 ## Estrutura de Pastas:
 
